@@ -1,0 +1,49 @@
+.dashboard{
+    color: var(--color4);
+    background-color: var(--color1);
+    min-height: 20vh;
+    text-align: center;
+    padding: 3%;
+   
+}
+
+.row div{
+    background-color: var(--color4);
+    margin-top: 3%;
+    padding: 3%;
+    color: var(--color1);
+    text-align: center;
+    min-height: 40vh;
+    position: relative;
+}
+.row h1{
+    text-align: center;
+}
+.row ul{
+    list-style-type:square;
+    text-align: start;
+}
+.row button{
+    
+    width: 70%;
+    color: var(--color4);
+    font-weight: bold;
+    border: 0px;
+    border-radius: 5px;
+    background-color: var(--color1);
+    padding: 2% 0;
+    margin: auto 0;
+    position: absolute;
+    bottom: 1rem;
+    right: 15%;
+}
+/* @media (max-width: 990px){
+.container{
+    left: 13%;
+}
+}
+@media (max-width: 990px){
+    .container{
+        left: 9%;
+    }
+    } */
