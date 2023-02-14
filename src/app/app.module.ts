@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './components/admin/admin.component';
 import { BooksComponent } from './components/books/books.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -17,6 +18,7 @@ import { CustomersComponent } from './components/customers/customers.component';
     AdminComponent,
     BooksComponent,
     CustomersComponent,
+    OrdersComponent,
    
   ],
   imports: [
