@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { BooksComponent } from './------------';
-// import { CustomersComponent } from './------------';
+import { BooksComponent } from './components/books/books.component';
+import { CustomersComponent } from './components/customers/customers.component';
 // import { OrdersComponent } from './------------';
 const routes: Routes = [
-  // {path:"Books",component:BooksComponent},
-   // {path:"Customers",component:CustomersComponent},
+  {path:"books",component:BooksComponent},
+   {path:"customers",component:CustomersComponent},
     // {path:"Orders",component:OrdersComponent}
 ];
 

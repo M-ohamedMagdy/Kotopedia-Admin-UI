@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './components/admin/admin.component';
+import { BooksComponent } from './components/books/books.component';
+import { CustomersComponent } from './components/customers/customers.component';
 
 
 
@@ -13,6 +15,8 @@ import { AdminComponent } from './components/admin/admin.component';
   declarations: [
     AppComponent,
     AdminComponent,
+    BooksComponent,
+    CustomersComponent,
    
   ],
   imports: [
