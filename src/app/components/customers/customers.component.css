@@ -30,28 +30,13 @@
     top: 7px;
 }
 .data{
-    /* margin-top: 2%; */
+
     color: var(--color1);
 }
-.data img{
-    width: 100px;
-    height: 150px;
-}
+
 .data thead{
     background-color: var(--color4);
     border-bottom: 2px solid var(--color1);
     margin-top: 2%;
     height: 50px;
-}
-/* .data p{
-  display: none; 
-} */
-.data .id{
-    display: block;
-}
-.data input{
-    border: none;
-    text-align: center;
-    outline: none;
-    display: none;
 }

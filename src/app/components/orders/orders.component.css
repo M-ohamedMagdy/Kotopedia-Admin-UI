@@ -1,9 +1,9 @@
-.bookHeader{
+.orderHeader{
     background-color: var(--color4);
     color: var(--color1);
-    /* border-bottom: 2px solid var(--color1); */
+   
 }
-.getBook{
+.getOrder{
     width: 95%;
     margin-top: 3%;
     
@@ -29,9 +29,7 @@
     right: 35px;
     top: 7px;
 }
-
 .data{
-    /* margin-top: 2%; */
     color: var(--color1);
 }
 .data img{
@@ -44,12 +42,9 @@
     margin-top: 2%;
     height: 50px;
 }
-/* .data p{
-  display: none; 
-} */
-.data .id{
-    display: block;
-}
+
+
+
 .data input{
     border: none;
     text-align: center;
