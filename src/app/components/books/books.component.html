@@ -1,20 +1,20 @@
 
 
 <div class="container getBook">
-<!------------Books Header-------------------------->
+    <!------------Books Header-------------------------->
     <div class="row bookHeader justify-content-around text-center align-items-center">
         <h1 class="col-2">Books</h1>
         <div class="col-md-5  search">
-        <input class="" type="search" placeholder="Search by category">
-        <i  class="fa-solid fa-magnifying-glass iconSearch"></i>
+          <input class="" type="search" placeholder="Search by category">
+          <i  class="fa-solid fa-magnifying-glass iconSearch"></i>
+        </div>
     </div>
 <!-- Add Book Modal -->
     <div class="col-md-2 col-12 add" id="cont">
-      <button type="button" class="btn btn-primary my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus">Add Book</i></button>
+      <button type="button" class="btn btn-primary my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus"></i>Add Book</button>
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-
             <div class="modal-header ">
               <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Book</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -70,37 +70,21 @@
                   <button mat-raised-button class="btn btn-primary bootstrapButton" id="Mbtn">Add</button>
                 </div>
               </form>
+              <!-- form end -->
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="col-md-3 col-12 add">
-      <!-- <button (click)="fire()">show</button> -->
-      <button type="button" (click)="deleteAll()" class="btn btn-primary bootstrapButton"><i class="fa fa-duotone fa-trash">Delete All</i></button>
+      <button type="button" (click)="deleteAll()" class="btn btn-primary bootstrapButton"><i class="fa fa-duotone fa-trash"></i> Delete All</button>
     </div>
     </div>
 <!------------End Books Header-------------------------->
 <!------------BookContent------------------------------->
 <div class="row bookContent justify-content-around text-center align-items-center">
 <table class="data">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Unit Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-
       <tbody>
-        <!-- <tr *ngfor="let book of Books"> -->
            <tr *ngFor="let product of Products">
             <td><p class="id">{{product._id}}</p></td>
             <td><img src={{product.photo}} alt="..."></td>
@@ -114,7 +98,46 @@
           </tr>
       </tbody>
 </table>
+</div>
+</div>
+    <!------------End Books Header-------------------------->
+    <!------------BookContent------------------------------->
+    <div *ngFor="let product of Products" class="row bookContent justify-content-around align-items-center">
+        <img class="col-md-3 col-12" src={{product.photo}} alt="....">
+        <div class="col-md-9 col-12 book">
+            <h4>{{product.title}}</h4>
+            <h6>{{product.category}}</h6>
+            <h6>{{product.author}}</h6>
+            <h6>{{product.unitPrice}}</h6>
+            <p>{{product.description}}</p>
+            <div class="row justify-content-around btns">
+                <button class="col-md-5 col-12">Edit</button>
+                <button class="col-md-5 col-12">Delete</button>
+            </div>
+        </div>
+        <hr/>
+      </div>
+        <!-- ----------------- -->
+        <div class="row bookContent justify-content-around align-items-center">
+            <img class="col-md-3 col-12"
+                src="https://upload.wikimedia.org/wikipedia/ar/d/d3/%D8%BA%D9%84%D8%A7%D9%81_%D9%83%D8%AA%D8%A7%D8%A8_%D8%A7%D9%84%D8%B9%D8%A7%D8%AF%D8%A7%D8%AA_%D8%A7%D9%84%D8%B3%D8%A8%D8%B9_%D9%84%D9%84%D9%86%D8%A7%D8%B3_%D8%A7%D9%84%D9%81%D8%B9%D8%A7%D9%84%D9%8A%D9%86_%D9%84%D9%84%D8%BA%D8%A7%D9%8A%D8%A9.jpg"
+                alt="....">
+            <div class="col-md-9 col-12 book">
+                <h4>BOOK TITLE</h4>
+                <h6>CategoryName</h6>
+                <h6>Auther</h6>
+                <h6>Unit Price</h6>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Laborum quos temporibus, veniam aliquid obcaecati iure
+                    atque sit placeat iusto illum impedit saepe alias
+                    aliquam deserunt rerum tenetur eaque vero! Eligendi?</p>
+                <div class="row justify-content-around btns">
+                    <button class="col-md-5 col-12">Edit</button>
+                    <button class="col-md-5 col-12">Delete</button>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <!-- </div> -->
 
-</div>
-</div>
 
