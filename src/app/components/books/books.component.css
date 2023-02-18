@@ -1,12 +1,38 @@
 .bookHeader{
     background-color: var(--color4);
     color: var(--color1);
-    /* border-bottom: 2px solid var(--color1); */
+}
+.bookHeader h6{
+display: inline-block;
 }
 .getBook{
     width: 95%;
     margin-top: 3%;
+}
+
+.bookContent{
+    color: var(--color1);
+}
+.bookContent img{
+    margin: 2% 0px;
+    width: 150px;
+    height: 200px;
+    border: 1px solid;
+    border-radius: 10px;
     
+}
+.book{
+    margin-top: 2%;
+}
+.btns button{
+    background-color: var(--color1);
+    color: var(--color4);
+    font-weight: bold;
+    border-radius: 10px;
+    border: 0px;
+    padding: 5px 0px;
+    margin: 1% 0px;
+    width: 30%;
 }
 .search input{
     border-radius: 10px;
@@ -30,29 +56,5 @@
     top: 7px;
 }
 
-.data{
-    /* margin-top: 2%; */
-    color: var(--color1);
-}
-.data img{
-    width: 100px;
-    height: 150px;
-}
-.data thead{
-    background-color: var(--color4);
-    border-bottom: 2px solid var(--color1);
-    margin-top: 2%;
-    height: 50px;
-}
-/* .data p{
-  display: none; 
-} */
-.data .id{
-    display: block;
-}
-.data input{
-    border: none;
-    text-align: center;
-    outline: none;
-    display: none;
-}
+
+
