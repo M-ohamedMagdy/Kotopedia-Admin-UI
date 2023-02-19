@@ -1,4 +1,4 @@
-import { ViewChild } from '@angular/core';
+import { Input, ViewChild } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Component, OnChanges ,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators ,FormBuilder } from '@angular/forms';
@@ -68,6 +68,7 @@ export class BooksComponent implements OnInit{
     console.log(this.selectedFile);
   }
 
+  //Add Product
   AddOne(){
     try {
     const fd = new FormData();
@@ -83,11 +84,20 @@ export class BooksComponent implements OnInit{
 
     this.prodServ.addNewProduct(fd).subscribe({
       next:res=>{
-      console.log(res);
-      console.log(this.AddingForm.value);
-      this.AddingForm.reset();
+      // console.log(res);
+      // console.log(this.AddingForm.value);
+      this.prodServ.getAllProducts().subscribe(
+        {
+          next:(res)=>{
+            this.Products=res;
+          },
+          error(err){console.log(err)}
+        }
+      )
+      // this.AddingForm.reset();
     },error:err=>{
       console.log(fd);
+      alert("This book already exists")
     }
     })
 
@@ -97,41 +107,38 @@ export class BooksComponent implements OnInit{
 
   }
 
+  //Delete All Products
   deleteAll(){
     this.prodServ.deleteAllProducts().subscribe({
       next:res=>{
-        console.log('all products deleted successfully');
+        console.log(res);
+        this.Products=res;
       },error:err=>{
         console.log(err)
       }
     })
   }
+
+  searchValue ='';
+
+  //Search By category
+  onSubmit(){
+    console.log(this.searchValue);
+  }
+
+  getBooks(){
+    this.prodServ.getProductsByCategory(this.searchValue).subscribe({
+      next:res=>{
+        console.log(res);
+        this.Products = res;
+      },error:err=>{
+        console.log(err)
+      }
+    })
+  }
+
+
   del(){}
   edit(){}
 
 }
-  // allProducts:any;
-  // emptyText = '';
-  // newBook:any;
-
-
-
-  // getBook(e:any){
-  //   // this.newBook = e.target.value;
-  //   // console.log(this.newBook);
-
-  // }
-
-  // fire(){
-  //   // console.log(this.newBook);
-  //   // console.log(typeof this.newBook);
-  //   // console.log(JSON.parse(this.newBook));
-  //   // console.log(typeof JSON.parse(this.newBook));
-  // }
-
-  // get(x:string){
-  //   // this.newBook = JSON.parse(x);
-  // }
-
-
-// }

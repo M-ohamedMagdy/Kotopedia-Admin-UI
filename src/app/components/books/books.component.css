@@ -54,6 +54,9 @@ display: inline-block;
     right: 35px;
     top: 7px;
 }
+.iconSearch:hover{
+  cursor: pointer;
+}
 
 .data{
     /* margin-top: 2%; */

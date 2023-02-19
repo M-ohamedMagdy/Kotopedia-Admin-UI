@@ -22,7 +22,7 @@ export class ProductsService {
     return this.myHttpClient.get(this.baseUrl); // Done
   }
 
-  getProductsByCategory(category:string){
+  getProductsByCategory(category:string){       //Done
     return this.myHttpClient.get(this.baseUrl+`/${category}`);
   }
 
