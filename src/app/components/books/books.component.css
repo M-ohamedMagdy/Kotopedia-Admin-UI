@@ -6,14 +6,14 @@
 .getBook{
     width: 95%;
     margin-top: 3%;
-    
+
 }
 .search input{
     border-radius: 10px;
     border: none;
     padding: 1%;
     width: 100%;
-    
+
 }
 .search input:focus{
     outline: none;
@@ -45,7 +45,7 @@
     height: 50px;
 }
 /* .data p{
-  display: none; 
+  display: none;
 } */
 .data .id{
     display: block;
@@ -55,4 +55,18 @@
     text-align: center;
     outline: none;
     display: none;
+}
+
+textarea{
+  min-height: 200px;
+}
+
+.bootstrapButton{
+  background-color: var(--color1);
+  border-color: var(--color1);
+  color: var(--color4);
+}
+
+#AddModalButton{
+  color: white;
 }

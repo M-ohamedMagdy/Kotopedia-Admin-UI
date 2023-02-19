@@ -11,18 +11,18 @@ export class UsersService {
   constructor(private myHttpClient : HttpClient) { }
 
   getAllUsers(){
-    this.myHttpClient.get(this.baseUrl);
+    return this.myHttpClient.get(this.baseUrl);
   }
 
   getUserById(id:string){
-    this.myHttpClient.get(this.baseUrl+`/${id}`);
+    return this.myHttpClient.get(this.baseUrl+`/${id}`);
   }
 
   deleteAllUsers(){
-    this.myHttpClient.delete(this.baseUrl);
+    return this.myHttpClient.delete(this.baseUrl);
   }
 
   deleteUserById(id:string){
-    this.myHttpClient.delete(this.baseUrl+`/${id}`);
+    return this.myHttpClient.delete(this.baseUrl+`/${id}`);
   }
 }
