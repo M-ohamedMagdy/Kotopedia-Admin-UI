@@ -1,12 +1,29 @@
 .customerHeader{
     background-color: var(--color4);
     color: var(--color1);
+    padding: 1% 0px;
+    border-bottom: 1px solid var(--color1);
    
 }
 .getCustomer{
     width: 95%;
     margin-top: 3%;
-    
+   
+}
+.customer{
+    background-color: var(--color4);
+    padding: 2%;
+    align-items: center;
+    margin: 1% 0px;
+    color: var(--color1);
+}
+/* .customerContent{
+    color: var(--color1);
+} */
+.customerContent img{
+    height: 90px;
+    width: 90px;
+    border-radius: 50% 50%;
 }
 .search input{
     border-radius: 10px;
@@ -29,7 +46,16 @@
     right: 35px;
     top: 7px;
 }
-.data{
+.customer button{
+    background-color: var(--color1);
+    color: var(--color4);
+    padding: 2% 0px;
+    border: 0px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* .data{
 
     color: var(--color1);
 }
@@ -39,4 +65,4 @@
     border-bottom: 2px solid var(--color1);
     margin-top: 2%;
     height: 50px;
-}
+} */

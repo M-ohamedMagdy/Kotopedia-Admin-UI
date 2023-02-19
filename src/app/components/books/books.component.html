@@ -1,79 +1,107 @@
 
-
 <div class="container getBook">
-<!------------Books Header-------------------------->
+    <!------------Books Header-------------------------->
     <div class="row bookHeader justify-content-around text-center align-items-center">
         <h1 class="col-2">Books</h1>
         <div class="col-md-5  search">
-        <input class="" type="search" placeholder="Search for Book">
-        <i  class="fa-solid fa-magnifying-glass iconSearch"></i>
+          <!-- [(ngModel)]="searchValue" -->
+          <input class="" type="search" (keyup)="onSubmit()"  [(ngModel)]="searchValue" placeholder="Search by category">
+          <i  class="fa-solid fa-magnifying-glass iconSearch" (click)="getBooks()"></i>
+        </div>
+        <div class="row col-md-5 col-12 text-center justify-content-around">
+          <div class="col-md-5 col-12 text-center ">
+              <button type="button" class="btn btn-primary my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus"></i>Add Book</button>
+          </div>
+          <div class="col-md-5 col-12 ">
+              <button type="button" (click)="deleteAll()" class="btn btn-primary my-3 bootstrapButton"><i class="fa fa-duotone fa-trash"></i> Delete All</button>
+          </div>
+      </div>
+
     </div>
 <!-- Add Book Modal -->
-    <div class="col-md-2 col-12 add">
-      <button type="button" class="btn btn-primary my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus">Add Book</i></button>
+    <div class="col-md-2 col-12 add" id="cont">
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header ">
               <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Book</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <label for="message-text" class="col-form-label">Please Enter Book Details:</label>
+              <!-- Adding form  -->
+              <form [formGroup]="AddingForm" (ngSubmit)="AddOne()">
                 <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Message:</label>
-                  <textarea class="form-control" #text [value]="emptyText" placeholder="Add one book" id="message-text"></textarea>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>Book title</mat-label>
+                      <input matInput placeholder="Title" formControlName="title">
+                      <mat-error *ngIf="titleValid">{{titleValid}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Category</mat-label>
+                      <mat-select formControlName="category">
+                        <mat-option style="z-index: 2000;" *ngFor="let c of category" [value]="c.value">
+                          {{c.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>unitPrice</mat-label>
+                      <input matInput placeholder="00.00 EGP" formControlName="unitPrice">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>description: </mat-label>
+                      <input matInput placeholder="description"formControlName="description" >
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>author: </mat-label>
+                      <input matInput placeholder="author" formControlName="author" >
+                      <mat-error *ngIf="titleValid">{{authorValid}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="text-center my-2">
+                    <div class="text-start my-1">Book photo</div>
+                    <input class="form-control" type="file" (change)="getPhoto($event)" formControlName="photo">
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="Sbtn">Close</button>
+                  <button mat-raised-button class="btn btn-primary bootstrapButton" id="Mbtn">Add</button>
                 </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" (click)="get(text.value)" id="AddModalButton" class="btn btn-primary bootstrapButton">Add</button>
+              <!-- form end -->
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-md-3 col-12 add">
-      <button (click)="fire()">show</button>
-      <button type="button" class="btn btn-primary bootstrapButton"><i class="fa fa-duotone fa-trash">Delete All</i></button>
-    </div>
-    </div>
-<!------------End Books Header-------------------------->
-<!------------BookContent------------------------------->
-<div class="row bookContent justify-content-around text-center align-items-center">
-<table class="data">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Unit Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-
-       <tbody>
-        <!-- <tr *ngfor="let book of Books"> -->
-           <tr *ngFor="let product of allProducts">
-            <td><p class="id">{{product._id}}</p></td>
-            <td><img src={{product.photo}} alt="..."></td>
-            <td> <input id="editBook" type="text" value="Title"><p>{{product.title}}</p></td>
-            <td> <input id="editBook" type="text" value="Category"><p>{{product.category}}</p></td>
-            <td> <input id="editBook" type="text" value="Description"><p>{{product.description}}</p></td>
-            <td><input id="editBook" type="text" value="Author"><p>{{product.author}}</p></td>
-            <td><input id="editBook" type="number" value="1111"><p>{{product.unitPrice}}</p></td>
-            <td><i (click)="edit()"  class="fa fa-pencil edit"></i></td>
-            <td><i (click)="del()" class="fa fa-duotone fa-trash"></i></td>
-           </tr>
-       </tbody>
-</table>
-
+    <!------------End Books Header-------------------------->
+    <!------------BookContent------------------------------->
+    <div *ngFor="let product of Products" class="row bookContent justify-content-around align-items-center">
+        <img class="col-md-3 col-12" src={{product.photo}} alt="....">
+        <div class="col-md-9 col-12 book">
+            <h4>{{product.title}}</h4>
+            <h6>{{product.category}}</h6>
+            <h6>{{product.author}}</h6>
+            <h6>{{product.unitPrice}}</h6>
+            <p>{{product.description}}</p>
+            <div class="row justify-content-around btns">
+                <button class="col-md-5 col-12">Edit</button>
+                <button class="col-md-5 col-12">Delete</button>
+            </div>
+        </div>
+        <hr/>
+      </div>
 </div>
-</div>
+
 

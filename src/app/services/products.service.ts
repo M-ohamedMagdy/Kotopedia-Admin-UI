@@ -10,29 +10,28 @@ export class ProductsService {
 
   constructor(private myHttpClient : HttpClient) { }
 
-  addNewProduct(productInfo:object){
+  addNewProduct(productInfo:object){                            //Done
     return this.myHttpClient.post(this.baseUrl, productInfo);
   }
 
   updateProduct(productUpdate:object){
-    return this.myHttpClient.patch(this.baseUrl, productUpdate);
+    return this.myHttpClient.patch(this.baseUrl, productUpdate); //
   }
 
   getAllProducts(){
-    return this.myHttpClient.get(this.baseUrl);
+    return this.myHttpClient.get(this.baseUrl); // Done
   }
 
-  getProductsByCategory(category:string){
+  getProductsByCategory(category:string){       //Done
     return this.myHttpClient.get(this.baseUrl+`/${category}`);
   }
 
   deleteAllProducts(){
-    return this.myHttpClient.delete(this.baseUrl);
+    return this.myHttpClient.delete(this.baseUrl); //Done
   }
 
   deleteProductById(id:string){
-    return this.myHttpClient.delete(this.baseUrl+`/${id}`);
+    return this.myHttpClient.delete(this.baseUrl+`/${id}`); //
   }
-
 
 }
