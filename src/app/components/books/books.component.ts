@@ -13,6 +13,7 @@ import {HttpClient} from '@angular/common/http';
 export class BooksComponent implements OnInit{
 
   AddingForm:FormGroup;
+  UpdatingForm:FormGroup;
 
   category: any[] = [
     {value: 'crime', viewValue: 'Crime'},
@@ -32,6 +33,16 @@ export class BooksComponent implements OnInit{
         author:['',[Validators.required,Validators.maxLength(12),Validators.minLength(3)]],
         photo:[[],[Validators.required]],
       })
+
+      this.UpdatingForm = this.formBulider.group({
+        title:['',[Validators.maxLength(20),Validators.minLength(3)]],
+        category:[''],
+        unitPrice:[''],
+        description:[''],
+        author:['',[Validators.maxLength(12),Validators.minLength(3)]],
+        photo:[[]],
+      })
+
   }
 
   get titleValid(){
@@ -63,9 +74,9 @@ export class BooksComponent implements OnInit{
   selectedFile:File|any =null ;
 
   getPhoto(event:any) {
-    console.log(event);
+    //console.log(event);
     this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
+    //console.log(this.selectedFile);
   }
 
   //Add Product
@@ -122,12 +133,8 @@ export class BooksComponent implements OnInit{
   searchValue ='';
 
   //Search By category
-  onSubmit(){
-    console.log(this.searchValue);
-  }
-
-  getBooks(){
-    this.prodServ.getProductsByCategory(this.searchValue).subscribe({
+  getBooks(category:string){
+    this.prodServ.getProductsByCategory(category).subscribe({
       next:res=>{
         console.log(res);
         this.Products = res;
@@ -138,8 +145,57 @@ export class BooksComponent implements OnInit{
   }
 
 
-  del(){}
-  edit(){}
+  deleteBookById(id:string){
+    this.prodServ.deleteProductById(id).subscribe({
+      next:res=>{
+        console.log(res);
+        this.prodServ.getAllProducts().subscribe({
+          next:(res)=>{this.Products=res},
+          error:(err)=>{console.log(err)}
+        });
+      },
+      error:err=>{
+        console.log(err);
+
+      }
+    })
+  }
+
+  productID:any;
+
+  updateBookInfo(book:any){
+    this.productID = book._id;
+    this.UpdatingForm = this.formBulider.group({
+      title:[book.title, [Validators.maxLength(20),Validators.minLength(3)]],
+      category:[book.category],
+      unitPrice:[book.unitPrice],
+      description:[book.description],
+      author:[book.author,[Validators.maxLength(12),Validators.minLength(3)]],
+      photo:[[]],
+    })
+  }
+
+  updateOne(){
+    try {
+      const fd = new FormData();
+      fd.append('id',this.productID);
+      fd.append('title',this.UpdatingForm.get('title')?.value);
+      fd.append('category',this.UpdatingForm.get('category')?.value);
+      fd.append('unitPrice',this.UpdatingForm.get('unitPrice')?.value);
+      fd.append('description',this.UpdatingForm.get('description')?.value);
+      fd.append('author',this.UpdatingForm.get('author')?.value);
+      fd.append('photo',this.selectedFile?this.selectedFile:undefined,this.selectedFile.name);
+
+      this.prodServ.updateProduct(fd).subscribe({
+        next:res=>{
+        console.log(res);
+        location.reload();
+        },
+        error:err=>{
+          console.log(fd);
+          //alert("This book already exists")
+        }})
+      } catch (error) { console.log(error) }
+  }
 
 }
->>>>>>> c546728f1ece9038b9ff32502625810bae112119
