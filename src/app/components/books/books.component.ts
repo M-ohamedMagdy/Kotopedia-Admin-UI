@@ -186,19 +186,11 @@ export class BooksComponent implements OnInit{
 
       this.prodServ.updateProduct(fd).subscribe({
         next:res=>{
-          this.prodServ.getAllProducts().subscribe(
-            {
-              next:(res)=>{
-                console.log(res);
-              },
-              error(err){console.log(err)}
-            }
-          )
-        console.log(res);
-        // location.reload(); //not working here
+          console.log(res);
         },
         error:err=>{
           console.log(fd);
+          location.reload();
         }})
       } catch (error) { console.log(error) }
 

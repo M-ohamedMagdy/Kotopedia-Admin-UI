@@ -82,9 +82,7 @@ display: inline-block;
     margin-top: 2%;
     height: 50px;
 }
-/* .data p{
-  display: none;
-} */
+
 .data .id{
     display: block;
 }
@@ -94,11 +92,7 @@ display: inline-block;
     outline: none;
     display: none;
 }
-
-textarea{
-  min-height: 200px;
-}
-
+/* form */
 .bootstrapButton{
   background-color: var(--color1);
   border-color: var(--color1);
