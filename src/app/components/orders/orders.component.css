@@ -49,3 +49,53 @@
     outline: none;
     display: none;
 }
+
+/*  */
+
+.orderContent{
+  color: var(--color1);
+  padding: 0;
+}
+
+.order{
+  display: flex;
+  width: 100%;
+  padding: 0;
+  gap: 3%;
+}
+
+.side2 h6{
+  display: inline-block;
+}
+.side2{
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  gap: 2%;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.total{
+  display: inline-block;
+  width: 50%;
+}
+.orderDetails{
+  display: inline-block;
+  width: 50%;
+}
+.layout{
+  display: flex;
+
+}
+.formBtn{
+  background-color: var(--color1);
+    color: var(--color4);
+    font-weight: bold;
+    border-radius: 10px;
+    border: 0px;
+    padding: 5px 0px;
+    margin: 1% 0px;
+    width: 30%;
+}
+

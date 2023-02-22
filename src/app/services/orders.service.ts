@@ -10,16 +10,14 @@ export class OrdersService {
 
   constructor(private myHttpClient : HttpClient) { }
 
-  updateOrderStatus(statusUpdate:{orderID:string,status:string}){
-    return this.myHttpClient.patch(this.baseUrl,statusUpdate);
+
+
+  updateOrderStatus(orderID:string,status:string){
+    return this.myHttpClient.patch(this.baseUrl,{orderID,status});
   }
 
   getAllOrders(){
     return this.myHttpClient.get(this.baseUrl);
-  }
-
-  getOrderById(id:string){
-    return this.myHttpClient.get(this.baseUrl+`/${id}`);
   }
 
 }
