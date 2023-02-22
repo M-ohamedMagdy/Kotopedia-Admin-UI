@@ -1,19 +1,19 @@
 .orderHeader{
     background-color: var(--color4);
     color: var(--color1);
-   
+
 }
 .getOrder{
     width: 95%;
     margin-top: 3%;
-    
+
 }
 .search input{
     border-radius: 10px;
     border: none;
     padding: 1%;
     width: 100%;
-    
+
 }
 .search input:focus{
     outline: none;
@@ -43,11 +43,9 @@
     height: 50px;
 }
 
-
-
-.data input{
+/* .data input{
     border: none;
     text-align: center;
     outline: none;
     display: none;
-}
+} */

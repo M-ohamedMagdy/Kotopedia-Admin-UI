@@ -89,6 +89,7 @@ export class BooksComponent implements OnInit{
     fd.append('description',this.AddingForm.get('description')?.value);
     fd.append('author',this.AddingForm.get('author')?.value);
     fd.append('photo',this.selectedFile,this.selectedFile.name);
+    this.selectedFile = null;
     console.log(fd);
     console.log(this.AddingForm.value);
 
@@ -184,7 +185,11 @@ export class BooksComponent implements OnInit{
       fd.append('unitPrice',this.UpdatingForm.get('unitPrice')?.value);
       fd.append('description',this.UpdatingForm.get('description')?.value);
       fd.append('author',this.UpdatingForm.get('author')?.value);
-      fd.append('photo',this.selectedFile?this.selectedFile:undefined,this.selectedFile.name);
+
+      if(this.selectedFile){
+        fd.append('photo',this.selectedFile,this.selectedFile.name);
+        this.selectedFile = null;
+      }
 
       this.prodServ.updateProduct(fd).subscribe({
         next:res=>{
