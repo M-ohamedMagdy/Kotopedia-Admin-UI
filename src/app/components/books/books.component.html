@@ -4,7 +4,6 @@
     <div class="row bookHeader justify-content-around text-center align-items-center">
         <h1 class="col-2">Books</h1>
         <div class="col-md-5  search">
-          <!-- [(ngModel)]="searchValue" -->
           <input #search type="search" placeholder="Search by category">
           <i  class="fa-solid fa-magnifying-glass iconSearch" (click)="getBooks(search.value)"></i>
         </div>
@@ -70,13 +69,14 @@
                   </div>
                   <div class="text-center my-2">
                     <div class="text-start my-1">Book photo</div>
-                    <input class="form-control" type="file" (change)="getPhoto($event)" formControlName="photo">
+                    <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg" (change)="getPhoto($event)" formControlName="photo">
                   </div>
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="Sbtn">Close</button>
-                  <button mat-raised-button class="btn btn-primary bootstrapButton" id="Mbtn">Add</button>
+                  <button  class="btn btn-secondary" data-bs-dismiss="modal" id="Sbtn">Close</button>
+                  <button data-bs-dismiss="modal" mat-raised-button class="btn btn-primary bootstrapButton"  id="Mbtn">Add</button>
+
                 </div>
               </form>
               <!-- form end -->
@@ -160,7 +160,7 @@
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="Sbtn">Close</button>
-                      <button mat-raised-button class="btn btn-primary bootstrapButton" id="Mbtn">Update</button>
+                      <button mat-raised-button data-bs-dismiss="modal" class="btn btn-primary bootstrapButton" id="Mbtn">Update</button>
                     </div>
                   </form>
                   <!-- form end -->

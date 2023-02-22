@@ -1,5 +1,3 @@
-
-import { Input, ViewChild } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Component, OnChanges ,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators ,FormBuilder } from '@angular/forms';
@@ -11,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit{
+
 
   AddingForm:FormGroup;
   UpdatingForm:FormGroup;
@@ -40,7 +39,7 @@ export class BooksComponent implements OnInit{
         unitPrice:[''],
         description:[''],
         author:['',[Validators.maxLength(12),Validators.minLength(3)]],
-        photo:[[]],
+        photo:[],
       })
 
   }
@@ -74,9 +73,7 @@ export class BooksComponent implements OnInit{
   selectedFile:File|any =null ;
 
   getPhoto(event:any) {
-    //console.log(event);
     this.selectedFile = <File>event.target.files[0];
-    //console.log(this.selectedFile);
   }
 
   //Add Product
@@ -89,15 +86,15 @@ export class BooksComponent implements OnInit{
     fd.append('description',this.AddingForm.get('description')?.value);
     fd.append('author',this.AddingForm.get('author')?.value);
     fd.append('photo',this.selectedFile,this.selectedFile.name);
+
     this.selectedFile = null;
-    console.log(fd);
-    console.log(this.AddingForm.value);
+
+    //console.log(fd);
+    //console.log(this.AddingForm.value);
 
 
     this.prodServ.addNewProduct(fd).subscribe({
       next:res=>{
-      // console.log(res);
-      // console.log(this.AddingForm.value);
       this.prodServ.getAllProducts().subscribe(
         {
           next:(res)=>{
@@ -106,17 +103,15 @@ export class BooksComponent implements OnInit{
           error(err){console.log(err)}
         }
       )
-      // this.AddingForm.reset();
     },error:err=>{
       console.log(fd);
-      alert("This book already exists")
     }
     })
-
     } catch (error) {
       console.log(error);
     }
 
+    this.AddingForm.reset();
   }
 
   //Delete All Products
@@ -124,14 +119,13 @@ export class BooksComponent implements OnInit{
     this.prodServ.deleteAllProducts().subscribe({
       next:res=>{
         console.log(res);
-        this.Products=res;
       },error:err=>{
         console.log(err)
       }
     })
-  }
+    this.Products=[];
 
-  searchValue ='';
+  }
 
   //Search By category
   getBooks(category:string){
@@ -145,7 +139,7 @@ export class BooksComponent implements OnInit{
     })
   }
 
-
+  //Delete Book by Id
   deleteBookById(id:string){
     this.prodServ.deleteProductById(id).subscribe({
       next:res=>{
@@ -160,6 +154,7 @@ export class BooksComponent implements OnInit{
 
       }
     })
+        location.reload();
   }
 
   productID:any;
@@ -172,7 +167,7 @@ export class BooksComponent implements OnInit{
       unitPrice:[book.unitPrice],
       description:[book.description],
       author:[book.author,[Validators.maxLength(12),Validators.minLength(3)]],
-      photo:[[]],
+      photo:[],
     })
   }
 
@@ -193,14 +188,22 @@ export class BooksComponent implements OnInit{
 
       this.prodServ.updateProduct(fd).subscribe({
         next:res=>{
+          this.prodServ.getAllProducts().subscribe(
+            {
+              next:(res)=>{
+                console.log(res);
+              },
+              error(err){console.log(err)}
+            }
+          )
         console.log(res);
-        location.reload();
+        // location.reload(); //not working here
         },
         error:err=>{
           console.log(fd);
-          //alert("This book already exists")
         }})
       } catch (error) { console.log(error) }
+
   }
 
 }
