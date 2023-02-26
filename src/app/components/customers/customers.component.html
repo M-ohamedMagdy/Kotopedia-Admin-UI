@@ -1,76 +1,26 @@
-
-      
 <div class="container getCustomer">
-    <!------------Customer Header-------------------------->
-        <div class="row customerHeader justify-content-around align-items-center text-center">
-            <h1 class="col-md-3 col-12">Customers</h1>
-            <div class="col-md-5 col-12 search">
-            <input class="" type="search" placeholder="Search for Customer">
-            <i  class="fa-solid fa-magnifying-glass iconSearch"></i>
-        </div>
-
-        </div>
-    <!------------End Customers Header-------------------------->
-    <!------------CustomerContent------------------------------->
-    <div class="row customerContent justify-content-around ">
-        <div class="col-md-3 col-12 customer">
-            <div class="row">
-            <img class="col-md-5 col-12" src="../../../assets/p.webp">
-            <div class="col-md-6 col-12">
-                <h4>UserName</h4>
-                <h6>abc@mail.com</h6>
-                <p>Gender</p>
-                <button>Delete</button>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-12 customer">
-            <div class="row">
-            <img class="col-md-5 col-12" src="../../../assets/p.webp">
-            <div class="col-md-6 col-12">
-                <h4>UserName</h4>
-                <h6>abc@mail.com</h6>
-                <p>Gender</p>
-                <button>Delete</button>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-12 customer">
-            <div class="row">
-            <img class="col-md-5 col-12" src="../../../assets/p.webp">
-            <div class="col-md-6 col-12">
-                <h4>UserName</h4>
-                <h6>abc@mail.com</h6>
-                <p>Gender</p>
-                <button>Delete</button>
-            </div>
-            </div>
-        </div>
-
-      
-    <!-- <table class="data">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        
-           <tbody>
-            <tr ngfor="let user of Users">
-               <tr>
-                
-                <td> <p>Name</p></td>
-                <td> <p>Email</p></td>
-                <td> <p>Gender</p></td>
-                <td><i  class="fa fa-duotone fa-trash"></i></td>
-               </tr> 
-           </tbody>  
-    </table> -->
-    
+  <!------------Customer Header-------------------------->
+  <div class="row customerHeader justify-content-around align-items-center text-center">
+    <h1 class="col-md-3 col-12">Customers</h1>
+    <div class="col-md-5 col-12 search">
+      <input class="" type="search" placeholder="Search for Customer">
+      <i class="fa-solid fa-magnifying-glass iconSearch"></i>
     </div>
+
+  </div>
+  <!------------End Customers Header-------------------------->
+  <!------------CustomerContent------------------------------->
+  <div class="row customerContent justify-content-around">
+    <div *ngFor="let user of users" class="col-md-3 col-12 customer">
+      <div class="row">
+        <img class="col-md-5 col-12" src="{{user.photo}}">
+        <div class="col-md-6 col-12">
+          <h4>{{user.name}}</h4>
+          <h6>{{user.email}}</h6>
+          <p>{{user.gender}}</p>
+          <button>Delete</button>
+        </div>
+      </div>
     </div>
-    
-    
+  </div>
+</div>

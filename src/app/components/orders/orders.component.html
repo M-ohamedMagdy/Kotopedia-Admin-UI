@@ -1,51 +1,76 @@
 <div class="container getOrder">
   <!------------Order Header-------------------------->
-  <div class="row orderHeader justify-content-around text-between align-items-center">
+  <div class="row orderHeader py-3 mb-3 justify-content-around text-between align-items-center">
     <h1 class="col-3">Orders</h1>
     <div class="col-md-6  search">
-      <input class="" type="search" placeholder="Search for Order">
-      <i class="fa-solid fa-magnifying-glass iconSearch"></i>
+      <input #input type="search" placeholder="Search by status">
+      <i (click)="search(input.value)" class="fa-solid fa-magnifying-glass iconSearch"></i>
     </div>
-
   </div>
   <!------------End Order Header-------------------------->
   <!------------OrderContent------------------------------->
-  <div class="row orderContent justify-content-around text-center align-items-center">
-
-    <div *ngFor="let order of Orders" class="row orderContent justify-content-around align-items-center">
-      <div class="col-md-9 col-12 order">
-
-        <div class="side2">
-          <h6><b>User Email :</b> {{order.email}}</h6>
-          <h6><b>Order Date :</b> {{order.date}}</h6>
-          <div>
-            <div *ngIf="order.isEdit">
-              <input type="text" [(ngModel)]="order.status" class="form-control" />
-            </div>
-            <div *ngIf="!order.isEdit">
-              <h6><b>Status :</b>{{order.status}}</h6>
-            </div>
-            <div *ngIf="order.isEdit">
-              <button class="btn btn-sm formBtn" (click)="updateStatus(order._id,order.status)">Update</button>
-              <button class="btn btn-sm " (click)="order.isEdit = false">Cancel</button>
-            </div>
-            <div *ngIf="!order.isEdit">
-              <button class="btn btn-sm " (click)="onEdit(order)"><i class="fa fa-pencil edit"></i></button>
-            </div>
-          </div>
-
-          <div class="row justify-content-around layout" *ngFor="let v of order.productsInOrder">
-            <div class="orderDetails">
-              <h6> <b>Book title:</b>{{v.title}}</h6>
-              <h6> <b>Quantity:</b>{{v.quantity}}</h6>
-            </div>
-            <div class="total">
-              <h6><b>Total Price :</b>{{v.quantity*v.unitPrice}} </h6>
-            </div>
+  <div class="row allOrders justify-content-around text-center align-items-center">
+    <div *ngFor="let order of Orders" class="col-12 col-sm-10 col-md-8 mx-2 eachOrder justify-content-around align-items-center my-3">
+      <div class="row">
+        <div class="col-6 text-start">
+          <h6><b>User Email : </b> {{order.email}}</h6>
+          <h6><b>Order ID : </b> {{order._id}}</h6>
+          <h6><b>Order Date : </b> {{order.date}}</h6>
+          <h6><b>Total Price : </b> {{order.totalPrice}}</h6>
+          <h6><b>Order Status : </b>
+            <mat-form-field *ngIf="!spanCondition" appearance="fill" class="w-100">
+              <mat-label>Order Status</mat-label>
+              <mat-select (valueChange)="updateStatus(order._id,$event)">
+                <mat-option style="z-index: 2000;" *ngFor="let s of statusOptions" [value]="s.value">
+                  {{s.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span *ngIf="spanCondition">{{order.status}}</span>
+            <button class="editBtn rounded-pill ms-3" (click)="editBtn(order.status)"><i class="fa-solid fa-pen-to-square"></i></button>
+          </h6>
+        </div>
+        <div class="col-6">
+          <table>
+            <thead>
+              <tr>
+                <th class="tableCell">Cover Image</th>
+                <th class="tableCell">Book Title</th>
+                <th class="tableCell">Quantity Ordered</th>
+                <th class="tableCell">Unit Price (EGP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of order.productsInOrder" class="tableRow">
+                <td class="tableCell"><img src="{{book.photo}}"></td>
+                <td class="tableCell">{{book.title}}</td>
+                <td class="tableCell">{{book.quantity}}</td>
+                <td class="tableCell">{{book.unitPrice}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <div class="side2">
+        <h6><b>User Email :</b> {{order.email}}</h6>
+        <h6><b>Order Date :</b> {{order.date}}</h6>
+        <h6><b>Total Price :</b> {{order.totalPrice}}</h6>
+        <div>
+          <h6><b>Status:</b></h6>
+          <select class='select-option' #mySelect (change)='onOptionsSelected(order._id,mySelect.value)'>
+            <option class='option' *ngFor='let option of dropDownData' [value]="option">{{option}}</option>
+          </select>
+        </div>
+        <div class="row justify-content-around layout" *ngFor="let v of order.productsInOrder">
+          <div class="orderDetails">
+            <h6> <b>Book title:</b>{{v.title}}</h6>
+            <h6> <b>Quantity:</b>{{v.quantity}}</h6>
           </div>
         </div>
-
-      </div>
+        <div *ngFor="let p of order.productsInOrder" class="total">
+          <h4>Total Price = {{p.unitPrice*p.quantity}}</h4>
+        </div>
+      </div> -->
     </div>
-    <hr>
+
   </div>

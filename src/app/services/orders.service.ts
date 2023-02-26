@@ -6,11 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class OrdersService {
 
-  private baseUrl = "http://localhost:3000/admin/orders";
+  // private baseUrl = "http://localhost:3000/admin/orders";
+  private baseUrl = "https://kotopedia-backend.onrender.com/admin/orders";
 
   constructor(private myHttpClient : HttpClient) { }
-
-
 
   updateOrderStatus(orderID:string,status:string){
     return this.myHttpClient.patch(this.baseUrl,{orderID,status});
@@ -20,4 +19,7 @@ export class OrdersService {
     return this.myHttpClient.get(this.baseUrl);
   }
 
+  getOrdersByStatus(status:any){
+    return this.myHttpClient.get(`${this.baseUrl}/${status}`);
+  }
 }

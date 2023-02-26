@@ -189,10 +189,12 @@ export class BooksComponent implements OnInit{
       this.prodServ.updateProduct(fd).subscribe({
         next:res=>{
           console.log(res);
+          location.reload();
+
         },
         error:err=>{
           console.log(fd);
-          location.reload();
+          // location.reload();
         }})
       } catch (error) { console.log(error) }
 

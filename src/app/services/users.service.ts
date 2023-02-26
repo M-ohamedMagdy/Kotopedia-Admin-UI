@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
 
-  private baseUrl = "http://localhost:3000/admin/users";
+  // private baseUrl = "http://localhost:3000/admin/users";
+  private baseUrl = "https://kotopedia-backend.onrender.com/admin/users";
 
   constructor(private myHttpClient : HttpClient) { }
 

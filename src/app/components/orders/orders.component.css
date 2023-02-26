@@ -27,75 +27,39 @@
     position: absolute;
     font-size: 20px;
     right: 35px;
-    top: 7px;
+    top: 8px;
 }
-.data{
-    color: var(--color1);
-}
-.data img{
-    width: 100px;
-    height: 150px;
-}
-.data thead{
-    background-color: var(--color4);
-    border-bottom: 2px solid var(--color1);
-    margin-top: 2%;
-    height: 50px;
+.iconSearch:hover{
+  cursor: pointer;
 }
 
-.data input{
-    border: none;
-    text-align: center;
-    outline: none;
-    display: none;
-}
+
+
+
 
 /*  */
 
-.orderContent{
-  color: var(--color1);
-  padding: 0;
+.eachOrder{
+  border: 1px solid var(--color1);
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
 }
 
-.order{
-  display: flex;
+table{
+  border: 1px solid var(--color1);
   width: 100%;
-  padding: 0;
-  gap: 3%;
 }
 
-.side2 h6{
-  display: inline-block;
+.tableRow{
+  border: 1px solid var(--color1);
 }
-.side2{
-  width: 100%;
-  padding: 2%;
-  display: flex;
-  gap: 2%;
-  justify-content: space-between;
-  align-items: center;
+
+.tableCell{
+  border: 1px solid var(--color1);
 
 }
-.total{
-  display: inline-block;
-  width: 50%;
-}
-.orderDetails{
-  display: inline-block;
-  width: 50%;
-}
-.layout{
-  display: flex;
-
-}
-.formBtn{
-  background-color: var(--color1);
-    color: var(--color4);
-    font-weight: bold;
-    border-radius: 10px;
-    border: 0px;
-    padding: 5px 0px;
-    margin: 1% 0px;
-    width: 30%;
+tr td img{
+  width: 60px;
 }
 
