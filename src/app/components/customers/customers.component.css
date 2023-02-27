@@ -3,6 +3,7 @@
     color: var(--color1);
     padding: 1% 0px;
     border-bottom: 1px solid var(--color1);
+    border-radius: 10px;
    
 }
 .getCustomer{
@@ -16,13 +17,15 @@
     align-items: center;
     margin: 1% 0px;
     color: var(--color1);
+    width: 50vh;
+    box-shadow: 3px 3px 5px var(--color3);
+    border-radius: 10px;
+   
 }
-/* .customerContent{
-    color: var(--color1);
-} */
+
 .customerContent img{
-    height: 90px;
-    width: 90px;
+    height: 110px;
+    width: 110px;
     border-radius: 50% 50%;
 }
 .search input{
@@ -54,15 +57,8 @@
     border-radius: 10px;
     width: 100%;
 }
-
-/* .data{
-
-    color: var(--color1);
+h6{
+    word-wrap: break-word;
 }
 
-.data thead{
-    background-color: var(--color4);
-    border-bottom: 2px solid var(--color1);
-    margin-top: 2%;
-    height: 50px;
-} */
+

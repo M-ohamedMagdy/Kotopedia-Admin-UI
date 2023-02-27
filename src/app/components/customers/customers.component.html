@@ -11,10 +11,10 @@
   <!------------End Customers Header-------------------------->
   <!------------CustomerContent------------------------------->
   <div class="row customerContent justify-content-around">
-    <div *ngFor="let user of users" class="col-md-3 col-12 customer">
+    <div *ngFor="let user of users" class="col-md-4 col-12 customer">
       <div class="row">
-        <img class="col-md-5 col-12" src="{{user.photo}}">
-        <div class="col-md-6 col-12">
+        <img class="col-md-4 col-12" src="{{user.photo}}">
+        <div class="col-md-8 col-12">
           <h4>{{user.name}}</h4>
           <h6>{{user.email}}</h6>
           <p>{{user.gender}}</p>

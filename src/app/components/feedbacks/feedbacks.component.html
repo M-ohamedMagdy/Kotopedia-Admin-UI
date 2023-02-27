@@ -7,15 +7,15 @@
       <i (click)="search(input.value)" class="fa-solid fa-magnifying-glass iconSearch"></i>
     </div>
   </div>
-
+<div class="container">
   <div class="row my-3" *ngFor="let f of feedbacksToShow">
     <div class="col-12 col-md-10 col-lg-8 customer">
-      <h4>Feedback from : <span>{{f.email}}</span></h4>
-      <h4>About Book : <span>{{f.title}}</span></h4>
-      <h4>on : <span>{{f.date}}</span></h4>
-      <h4>Feedback : <span>{{f.body}}</span></h4>
+      <h5><b>Feedback from :</b> <span>{{f.email}}</span></h5>
+      <h5><b>About Book :</b> <span>{{f.title}}</span></h5>
+      <h5><b>on :</b> <span>{{f.date}}</span></h5>
+      <h5><b>Feedback : </b><span>{{f.body}}</span></h5>
     </div>
 
   </div>
-
+</div>
 </div>

@@ -7,6 +7,7 @@
   color: var(--color1);
   padding: 1% 0px;
   border-bottom: 1px solid var(--color1);
+  border-radius: 10px;
 
 }
 .getCustomer{
@@ -23,6 +24,7 @@
   width: 100%;
   border-radius: 10px;
   box-shadow: 5px 8px var(--color3);
+  box-shadow: 3px 3px 5px var(--color3);
 
 }
 
@@ -69,7 +71,12 @@
 .iconSearch:hover{
   cursor: pointer;
 }
-
+h5{
+  color: var(--color1);
+  
+}
 span{
-  color: var(--color2);
+  color: var(--color1);
+    word-wrap: break-word;
+
 }
