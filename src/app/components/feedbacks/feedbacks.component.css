@@ -20,6 +20,10 @@
   align-items: center;
   margin: 1% 0px;
   color: var(--color1);
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 5px 8px var(--color3);
+
 }
 
 .customerContent img{
@@ -64,4 +68,8 @@
 
 .iconSearch:hover{
   cursor: pointer;
+}
+
+span{
+  color: var(--color2);
 }
