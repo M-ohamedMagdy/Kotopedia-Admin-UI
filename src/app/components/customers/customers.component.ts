@@ -23,4 +23,26 @@ export class CustomersComponent implements OnInit {
     )
   }
 
+  deleteOne(id:any){
+    this.userServ.deleteUserById(id).subscribe({
+      next:res=>{
+        console.log(res);
+        this.userServ.getAllUsers().subscribe({next:(res)=>{this.users = res;}})
+      },
+      error:error=>{console.log(error);
+      }
+    })
+  }
+
+  getOne(email:any){
+    this.userServ.getUserByEmail(email).subscribe({
+      next:res=>{
+        console.log(res);
+        this.users = res;
+      },
+      error:error=>{console.log(error);
+      }
+    })
+  }
+
 }

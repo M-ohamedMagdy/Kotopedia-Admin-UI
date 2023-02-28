@@ -3,8 +3,8 @@
   <div class="row customerHeader justify-content-around align-items-center text-center">
     <h1 class="col-md-3 col-12">Customers</h1>
     <div class="col-md-5 col-12 search">
-      <input class="" type="search" placeholder="Search for Customer">
-      <i class="fa-solid fa-magnifying-glass iconSearch"></i>
+      <input #search class="" type="search" placeholder="Search for Customer">
+      <i class="fa-solid fa-magnifying-glass iconSearch" (click)="getOne(search.value)"></i>
     </div>
 
   </div>
@@ -15,10 +15,11 @@
       <div class="row">
         <img class="col-md-4 col-12" src="{{user.photo}}">
         <div class="col-md-8 col-12">
-          <h4>{{user.name}}</h4>
-          <h6>{{user.email}}</h6>
+          <h4>{{user.email}}</h4>
+          <h6>{{user._id}}</h6>
+          <h6>{{user.name}}</h6>
           <p>{{user.gender}}</p>
-          <button>Delete</button>
+          <button (click)="deleteOne(user._id)">Delete</button>
         </div>
       </div>
     </div>

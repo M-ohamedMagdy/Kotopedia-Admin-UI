@@ -15,15 +15,15 @@ export class UsersService {
     return this.myHttpClient.get(this.baseUrl);
   }
 
-  getUserById(id:string){
-    return this.myHttpClient.get(this.baseUrl+`/${id}`);
-  }
-
-  deleteAllUsers(){
-    return this.myHttpClient.delete(this.baseUrl);
+  getUserByEmail(email:string){
+    return this.myHttpClient.get(this.baseUrl+`/${email}`);
   }
 
   deleteUserById(id:string){
     return this.myHttpClient.delete(this.baseUrl+`/${id}`);
   }
+
+  // deleteAllUsers(){
+  //   return this.myHttpClient.delete(this.baseUrl);
+  // }
 }
