@@ -72,31 +72,37 @@ export class BooksComponent implements OnInit{
     )
   }
 
-  onTableDataChange(event:any){
+  onTableDataChange(event:any,searchValue:any){
     this.page=event;
-    this.prodServ.getAllProducts().subscribe(
-      {
-        next:(res)=>{
-          this.Products = res;
-          console.log(this.Products)
-        },
-        error(err){console.log(err)}
-      }
-    )
+    if (searchValue) {
+      this.getBooks(searchValue);
+    } else {
+      this.prodServ.getAllProducts().subscribe(
+        {
+          next:(res)=>{
+            this.Products = res;
+            console.log(this.Products)
+          },
+          error(err){console.log(err)}
+        })
+    }
   }
 
-  onTableSizeChange(event:any){
+  onTableSizeChange(event:any,searchValue:any){
     this.tablesize=event.target.value;
     this.page=1;
-    this.prodServ.getAllProducts().subscribe(
-      {
-        next:(res)=>{
-          this.Products = res;
-          console.log(this.Products)
-        },
-        error(err){console.log(err)}
-      }
-    )
+    if (searchValue) {
+      this.getBooks(searchValue);
+    } else {
+      this.prodServ.getAllProducts().subscribe(
+        {
+          next:(res)=>{
+            this.Products = res;
+            console.log(this.Products)
+          },
+          error(err){console.log(err)}
+        })
+    }
   }
 
   ngOnChanges(): void {}

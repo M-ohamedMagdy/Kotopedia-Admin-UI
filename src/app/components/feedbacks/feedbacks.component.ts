@@ -27,7 +27,6 @@ export class FeedbacksComponent implements OnInit {
 
   }
 
-
   search(title:any){
     this.feedbackServ.getByTitle(title).subscribe({
       next:res=>{ this.feedbacksToShow = res; },
@@ -35,20 +34,30 @@ export class FeedbacksComponent implements OnInit {
     });
   }
 
-  onTableDataChange(event:any){
+  onTableDataChange(event:any,searchValue:any){
     this.page=event;
-    this.feedbackServ.getAll().subscribe({
-      next:res=>{ this.feedbacksToShow = res; },
-      error:error=>{ console.log(error); }
-    })
+    if(searchValue){
+      this.search(searchValue);
+    }
+    else{
+      this.feedbackServ.getAll().subscribe({
+        next:res=>{ this.feedbacksToShow = res; },
+        error:error=>{ console.log(error); }
+      })
+    }
   }
 
-  onTableSizeChange(event:any){
+  onTableSizeChange(event:any,searchValue:any){
     this.tablesize=event.target.value;
     this.page=1;
-    this.feedbackServ.getAll().subscribe({
-      next:res=>{ this.feedbacksToShow = res; },
-      error:error=>{ console.log(error); }
-    })
+    if(searchValue){
+      this.search(searchValue);
+    }
+    else{
+      this.feedbackServ.getAll().subscribe({
+        next:res=>{ this.feedbacksToShow = res; },
+        error:error=>{ console.log(error); }
+      })
+    }
   }
 }

@@ -12,7 +12,7 @@ export class FeedbacksService {
 
   constructor(private myHttpClient : HttpClient) { }
 
-  getAll():Observable<any>{
+  getAll(){
     return this.myHttpClient.get(this.baseUrl);
   }
 

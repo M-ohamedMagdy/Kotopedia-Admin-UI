@@ -50,31 +50,37 @@ export class CustomersComponent implements OnInit {
       }
     })
   }
-  
-  onTableDataChange(e : any){
-    this.page=e;
-    this.userServ.getAllUsers().subscribe({
-        next:(res)=>{
-          this.users = res;
-          console.log(this.users)
-        },
-        error(err){console.log(err)}
-      })
+
+  onTableDataChange(event:any, searchValue:any){
+    this.page=event;
+    if(searchValue){
+      this.getOne(searchValue);
+    }
+    else{
+      this.userServ.getAllUsers().subscribe({
+          next:(res)=>{
+            this.users = res;
+            console.log(this.users)
+          },
+          error(err){console.log(err)}
+        })
+    }
   }
 
-  onTableSizeChange(event:any){
+  onTableSizeChange(event:any, searchValue:any){
     this.tablesize=event.target.value;
     this.page=1;
-    this.userServ.getAllUsers().subscribe(
-      {
-        next:(res)=>{
-          this.users = res;
-          console.log(this.users)
-        },
-        error(err){console.log(err)}
-      }
-    )
+    if(searchValue){
+      this.getOne(searchValue);
+    }
+    else{
+      this.userServ.getAllUsers().subscribe({
+          next:(res)=>{
+            this.users = res;
+            console.log(this.users)
+          },
+          error(err){console.log(err)}
+        })
+    }
   }
-
-
 }

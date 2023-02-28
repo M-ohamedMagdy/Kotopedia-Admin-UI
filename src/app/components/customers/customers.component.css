@@ -64,6 +64,10 @@
     right: 35px;
     top: 7px;
 }
+
+.iconSearch:hover{
+  cursor: pointer;
+}
 .customer button{
     background-color: var(--color1);
     color: var(--color4);
