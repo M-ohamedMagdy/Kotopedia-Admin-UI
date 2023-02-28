@@ -8,6 +8,12 @@ import { FeedbacksService } from 'src/app/services/feedbacks.service';
 })
 export class FeedbacksComponent implements OnInit {
 
+  POSTS:any;
+  page:number=1;
+  count:number=0;
+  tablesize:number=6;
+  tablesizes:any=[3,6,9,12];
+
   feedbacksToShow:any = [];
 
   constructor(private feedbackServ:FeedbacksService){}
@@ -29,4 +35,20 @@ export class FeedbacksComponent implements OnInit {
     });
   }
 
+  onTableDataChange(event:any){
+    this.page=event;
+    this.feedbackServ.getAll().subscribe({
+      next:res=>{ this.feedbacksToShow = res; },
+      error:error=>{ console.log(error); }
+    })
+  }
+
+  onTableSizeChange(event:any){
+    this.tablesize=event.target.value;
+    this.page=1;
+    this.feedbackServ.getAll().subscribe({
+      next:res=>{ this.feedbacksToShow = res; },
+      error:error=>{ console.log(error); }
+    })
+  }
 }

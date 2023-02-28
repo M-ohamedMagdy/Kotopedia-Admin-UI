@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class OrdersService {
     return this.myHttpClient.patch(this.baseUrl,{orderID,status});
   }
 
-  getAllOrders(){
+  getAllOrders():Observable<any>{
     return this.myHttpClient.get(this.baseUrl);
   }
 

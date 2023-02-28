@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,13 +12,14 @@ export class UsersService {
 
   constructor(private myHttpClient : HttpClient) { }
 
-  getAllUsers(){
+  getAllUsers():Observable<any>{
     return this.myHttpClient.get(this.baseUrl);
   }
 
   getUserByEmail(email:string){
     return this.myHttpClient.get(this.baseUrl+`/${email}`);
   }
+
 
   deleteUserById(id:string){
     return this.myHttpClient.delete(this.baseUrl+`/${id}`);

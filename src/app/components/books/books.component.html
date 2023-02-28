@@ -85,9 +85,9 @@
         </div>
       </div>
     </div>
-    <!------------End Books Header-------------------------->
+    <!------------End Books Header-------- ------------------>
     <!------------BookContent------------------------------->
-      <div *ngFor="let product of Products" class="row bookContent justify-content-around align-items-center">
+      <div *ngFor="let product of Products | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index" class="row bookContent justify-content-around align-items-center">
         <img class="col-md-3 col-12" src={{product.photo}} alt="....">
         <div class="col-md-9 col-12 book">
             <h5><b>{{product.title}}</b></h5>
@@ -101,6 +101,8 @@
                 <button class="col-md-5 col-12" (click)="deleteBookById(product._id)">Delete</button>
             </div>
         </div>
+
+
         <hr/>
         <!-- Update book info modal -->
         <div class="col-md-2 col-12 add" id="cont">
@@ -170,6 +172,15 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="my-pagination">
+        <pagination-controls
+        previosLabel="Pre"
+        nextLable="Next"
+        (pageChange)="onTableDataChange($event)">
+
+        </pagination-controls>
       </div>
 </div>
 

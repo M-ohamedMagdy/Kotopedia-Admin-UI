@@ -11,7 +11,7 @@
   <!------------End Customers Header-------------------------->
   <!------------CustomerContent------------------------------->
   <div class="row customerContent justify-content-around">
-    <div *ngFor="let user of users" class="col-md-4 col-12 customer">
+    <div *ngFor="let user of users | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index" class="col-md-4 col-12 customer">
       <div class="row">
         <img class="col-md-4 col-12" src="{{user.photo}}">
         <div class="col-md-8 col-12">
@@ -23,5 +23,14 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div>
+    <pagination-controls class="my-pagination"
+    previosLabel="Pre"
+    nextLable="Next"
+    (pageChange)="onTableDataChange($event)">
+
+    </pagination-controls>
   </div>
 </div>

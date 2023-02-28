@@ -8,7 +8,7 @@
     </div>
   </div>
 <div class="container">
-  <div class="row my-3" *ngFor="let f of feedbacksToShow">
+  <div class="row my-3" *ngFor="let f of feedbacksToShow | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index">
     <div class="col-12 col-md-10 col-lg-8 customer">
       <h5><b>Feedback from :</b> <span>{{f.email}}</span></h5>
       <h5><b>About Book :</b> <span>{{f.title}}</span></h5>
@@ -17,5 +17,15 @@
     </div>
 
   </div>
+
+  <div>
+    <pagination-controls class="my-pagination"
+    previosLabel="Pre"
+    nextLable="Next"
+    (pageChange)="onTableDataChange($event)">
+
+    </pagination-controls>
+  </div>
+
 </div>
 </div>

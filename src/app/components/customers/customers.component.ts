@@ -8,6 +8,12 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class CustomersComponent implements OnInit {
 
+  POSTS:any;
+  page:number=1;
+  count:number=0;
+  tablesize:number=12;
+  tablesizes:any=[6,12,18,24];
+
   constructor(private userServ : UsersService){}
 
   users:any;
@@ -44,5 +50,31 @@ export class CustomersComponent implements OnInit {
       }
     })
   }
+  
+  onTableDataChange(e : any){
+    this.page=e;
+    this.userServ.getAllUsers().subscribe({
+        next:(res)=>{
+          this.users = res;
+          console.log(this.users)
+        },
+        error(err){console.log(err)}
+      })
+  }
+
+  onTableSizeChange(event:any){
+    this.tablesize=event.target.value;
+    this.page=1;
+    this.userServ.getAllUsers().subscribe(
+      {
+        next:(res)=>{
+          this.users = res;
+          console.log(this.users)
+        },
+        error(err){console.log(err)}
+      }
+    )
+  }
+
 
 }
