@@ -10,7 +10,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class BooksComponent implements OnInit{
 
-
+  POSTS:any;
+  page:number=1;
+  count:number=0;
+  tablesize:number=6;
+  tablesizes:any=[3,6,9,12];
   AddingForm:FormGroup;
   UpdatingForm:FormGroup;
 
@@ -57,6 +61,33 @@ export class BooksComponent implements OnInit{
 
   Products:any;
   ngOnInit(): void {
+    this.prodServ.getAllProducts().subscribe(
+      {
+        next:(res)=>{
+          this.Products = res;
+          console.log(this.Products)
+        },
+        error(err){console.log(err)}
+      }
+    )
+  }
+
+  onTableDataChange(event:any){
+    this.page=event;
+    this.prodServ.getAllProducts().subscribe(
+      {
+        next:(res)=>{
+          this.Products = res;
+          console.log(this.Products)
+        },
+        error(err){console.log(err)}
+      }
+    )
+  }
+
+  onTableSizeChange(event:any){
+    this.tablesize=event.target.value;
+    this.page=1;
     this.prodServ.getAllProducts().subscribe(
       {
         next:(res)=>{

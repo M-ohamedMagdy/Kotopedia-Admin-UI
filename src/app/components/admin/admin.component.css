@@ -4,7 +4,7 @@
     min-height: 20vh;
     text-align: center;
     padding: 3%;
-   
+
 }
 
 .rows div{
@@ -17,6 +17,7 @@
     position: relative;
     width: 40vh;
     border-radius: 10px;
+    margin-bottom: 2%;
 }
 .row h1{
     text-align: center;
@@ -26,7 +27,7 @@
     text-align: start;
 }
 .row button{
-    
+
     width: 70%;
     color: var(--color4);
     font-weight: bold;

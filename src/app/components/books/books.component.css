@@ -118,3 +118,18 @@ button#Sbtn{
   color: white;
 }
 
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: var(--color1);
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color4);
+  padding: 1%;
+}
+
+.my-pagination ::ng-deep .ngx-pagination  {
+  text-align: center;
+  border-radius: 10px;
+  padding: 1%;
+  margin: auto;
+}
+

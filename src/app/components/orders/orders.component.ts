@@ -7,10 +7,13 @@ import { OrdersService } from 'src/app/services/orders.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
-  constructor(private orderServ:OrdersService ){
+  constructor(private orderServ:OrdersService ){}
 
-  }
-
+  POSTS:any;
+  page:number=1;
+  count:number=0;
+  tablesize:number=6;
+  tablesizes:any=[3,6,9,12];
   Orders:any;
   arrOfProductsInOrder:any;
   totalPrice=0;
@@ -90,5 +93,40 @@ export class OrdersComponent {
       },
       error:(error)=>{alert(error.error); this.spanCondition = !this.spanCondition;}
     });
+  }
+
+  onTableDataChange(event:any){
+    this.page=event;
+    this.orderServ.getAllOrders().subscribe(
+      {
+        next:(res)=>{
+          this.Orders = res;
+          console.log(this.Orders)
+          this.Orders.forEach((element:any) => {
+            this.arrOfProductsInOrder=element.productsInOrder;
+            console.log(this.arrOfProductsInOrder)
+          });
+        },
+        error(err){console.log(err)}
+      }
+    )
+  }
+
+  onTableSizeChange(event:any){
+    this.tablesize=event.target.value;
+    this.page=1;
+    this.orderServ.getAllOrders().subscribe(
+      {
+        next:(res)=>{
+          this.Orders = res;
+          console.log(this.Orders)
+          this.Orders.forEach((element:any) => {
+            this.arrOfProductsInOrder=element.productsInOrder;
+            console.log(this.arrOfProductsInOrder)
+          });
+        },
+        error(err){console.log(err)}
+      }
+    )
   }
 }

@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,11 +12,11 @@ export class UsersService {
 
   constructor(private myHttpClient : HttpClient) { }
 
-  getAllUsers(){
+  getAllUsers():Observable<any>{
     return this.myHttpClient.get(this.baseUrl);
   }
 
-  getUserById(id:string){
+  getUserById(id:string){ 
     return this.myHttpClient.get(this.baseUrl+`/${id}`);
   }
 

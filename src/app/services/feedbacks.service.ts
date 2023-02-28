@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class FeedbacksService {
 
   constructor(private myHttpClient : HttpClient) { }
 
-  getAll(){
+  getAll():Observable<any>{
     return this.myHttpClient.get(this.baseUrl);
   }
 
