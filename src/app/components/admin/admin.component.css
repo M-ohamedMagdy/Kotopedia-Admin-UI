@@ -4,7 +4,7 @@
     min-height: 20vh;
     text-align: center;
     padding: 3%;
-   
+
 }
 
 .rows div{
@@ -26,7 +26,7 @@
     text-align: start;
 }
 .row button{
-    
+
     width: 70%;
     color: var(--color4);
     font-weight: bold;
@@ -47,4 +47,8 @@ iframe{
     width: 80vh;
     height: 50vh;
     margin-top: 2%;
+}
+
+.logout{
+  background-color: var(--color4);
 }
