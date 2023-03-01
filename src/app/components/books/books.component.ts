@@ -181,17 +181,13 @@ export class BooksComponent implements OnInit{
     this.prodServ.deleteProductById(id).subscribe({
       next:res=>{
         console.log(res);
-        this.prodServ.getAllProducts().subscribe({
-          next:(res)=>{this.Products=res},
-          error:(err)=>{console.log(err)}
-        });
+        this.ngOnInit();
       },
       error:err=>{
         console.log(err);
 
       }
     })
-        location.reload();
   }
 
   productID:any;
@@ -226,8 +222,7 @@ export class BooksComponent implements OnInit{
       this.prodServ.updateProduct(fd).subscribe({
         next:res=>{
           console.log(res);
-          location.reload();
-
+          this.ngOnInit();
         },
         error:err=>{
           console.log(fd);
