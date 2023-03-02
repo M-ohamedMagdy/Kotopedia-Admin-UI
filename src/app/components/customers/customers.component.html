@@ -14,12 +14,12 @@
     <div *ngFor="let user of users | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index" class="col-md-4 col-12 customer">
       <div class="row">
         <img class="col-md-4 col-12" src="{{user.photo}}">
-        <div class="col-md-8 col-12">
-          <h4>{{user.email}}</h4>
+        <div class="col-md-8 col-12 userinfo">
+          <h5>{{user.email}}</h5>
           <h6>{{user._id}}</h6>
           <h6>{{user.name}}</h6>
           <p>{{user.gender}}</p>
-          <button (click)="deleteOne(user._id)">Delete</button>
+          <button class="btn btn-danger" (click)="deleteOne(user._id)">Delete</button>
         </div>
       </div>
     </div>

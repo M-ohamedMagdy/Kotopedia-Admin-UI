@@ -9,10 +9,10 @@
         </div>
         <div class="row col-md-5 col-12 text-center justify-content-around">
           <div class="col-md-5 col-12 text-center ">
-              <button type="button" class="btn btn-primary my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus"></i>Add Book</button>
+              <button type="button" class="btn btn-success my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus"></i> Add Book</button>
           </div>
           <div class="col-md-5 col-12 ">
-              <button type="button" (click)="deleteAll()" class="btn btn-primary my-3 bootstrapButton"><i class="fa fa-duotone fa-trash"></i> Delete All</button>
+              <button type="button" (click)="deleteAll()" class="btn btn-danger my-3 bootstrapButton"><i class="fa fa-duotone fa-trash"></i> Delete All</button>
           </div>
       </div>
 
@@ -74,8 +74,8 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button  class="btn btn-secondary" data-bs-dismiss="modal" id="Sbtn">Close</button>
-                  <button data-bs-dismiss="modal" mat-raised-button class="btn btn-primary bootstrapButton"  id="Mbtn">Add</button>
+                  <button  class="btn btn-dark" data-bs-dismiss="modal" id="Sbtn">Close</button>
+                  <button data-bs-dismiss="modal" class="btn btn-success"  id="">Add</button>
 
                 </div>
               </form>
@@ -96,9 +96,9 @@
             <h6><b>Author :</b> {{product.author}}</h6>
             <h6><b>Price :</b> {{product.unitPrice}}</h6>
             <p><b>Description :</b> {{product.description}}</p>
-            <div class="row justify-content-around btns">
-                <button class="col-md-5 col-12" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="updateBookInfo(product)">Edit</button>
-                <button class="col-md-5 col-12" (click)="deleteBookById(product._id)">Delete</button>
+            <div class="row justify-content-around btns mb-2">
+                <button class="col-md-5 col-12 btn btn-dark" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="updateBookInfo(product)">Edit</button>
+                <button class="col-md-5 col-12 btn btn-danger" (click)="deleteBookById(product._id)">Delete</button>
             </div>
         </div>
 
@@ -161,8 +161,8 @@
                     </div>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="Sbtn">Close</button>
-                      <button mat-raised-button data-bs-dismiss="modal" class="btn btn-primary bootstrapButton" id="Mbtn">Update</button>
+                      <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="Sbtn">Close</button>
+                      <button data-bs-dismiss="modal" class="btn btn-success" id="Mbtn">Update</button>
                     </div>
                   </form>
                   <!-- form end -->

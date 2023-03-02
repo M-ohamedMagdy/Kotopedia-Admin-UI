@@ -40,21 +40,6 @@ export class OrdersComponent {
     });
   }
 
-  /*dropDownData=["pending","accepted","rejected"]
-
-  onOptionsSelected(id:any,newStatus:string){
-    console.log("the selected value is " + newStatus);
-    console.log("the selected id is " + id);
-    this.orderServ.updateOrderStatus(id,newStatus).subscribe(
-      {
-        next:(res)=>{
-          console.log(res)
-        },
-        error(err){console.log(err)}
-      }
-    )
-  }*/
-
   search(status: any) {
     this.orderServ.getOrdersByStatus(status).subscribe({
       next: (res) => {

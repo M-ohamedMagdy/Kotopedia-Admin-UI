@@ -17,7 +17,7 @@ export class OrdersService {
     return this.myHttpClient.patch(this.baseUrl,{orderID,status});
   }
 
-  getAllOrders():Observable<any>{
+  getAllOrders(){
     return this.myHttpClient.get(this.baseUrl);
   }
 

@@ -73,10 +73,9 @@
 }
 h5{
   color: var(--color1);
-
 }
-span{
-  color: var(--color1);
+h5 span{
+  color: var(--color2);
     word-wrap: break-word;
 }
 

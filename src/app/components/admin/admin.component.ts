@@ -35,9 +35,7 @@ export class AdminComponent {
     const date = new Date(2023,1,1);
     document.cookie = `token=${this.token};expires=${date}`;
     this.token = "";
-    location.replace("http://localhost:4201/home");
+    setTimeout(function(){location.replace("http://localhost:4201/home")},2000);
   }
-
-
-
+  
 }

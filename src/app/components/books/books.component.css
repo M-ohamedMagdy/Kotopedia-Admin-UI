@@ -30,9 +30,10 @@ display: inline-block;
 }
 
 .btns button{
-    background-color: var(--color1);
-    color: var(--color4);
-    font-weight: bold;
+    /* background-color: var(--color1);
+    color: var(--color4); */
+    /* font-weight: bold; */
+    font-size: 1.2rem;
     border-radius: 10px;
     border: 0px;
     padding: 5px 0px;
@@ -94,11 +95,11 @@ display: inline-block;
     display: none;
 }
 /* form */
-.bootstrapButton{
+/* .bootstrapButton{
   background-color: var(--color1);
   border-color: var(--color1);
   color: var(--color4);
-}
+} */
 
 #AddModalButton{
   color: white;
@@ -112,11 +113,11 @@ display: inline-block;
   background-color: var(--color4);
 
 }
-button#Mbtn,
+/* button#Mbtn,
 button#Sbtn{
   background-color: var(--color1);
   color: white;
-}
+} */
 
 .my-pagination ::ng-deep .ngx-pagination .current {
   background: var(--color1);

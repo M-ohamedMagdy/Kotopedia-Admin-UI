@@ -17,7 +17,7 @@
     align-items: center;
     margin: 1% 0px;
     color: var(--color1);
-    width: 50vh;
+    width: 55vh;
     box-shadow: 3px 3px 5px var(--color3);
     border-radius: 10px;
 
@@ -69,15 +69,16 @@
   cursor: pointer;
 }
 .customer button{
-    background-color: var(--color1);
-    color: var(--color4);
     padding: 2% 0px;
     border: 0px;
     border-radius: 10px;
     width: 100%;
 }
+
 h6{
     word-wrap: break-word;
 }
 
-
+.userinfo *{
+  word-wrap: break-word;
+}

@@ -18,7 +18,7 @@
           <h6><b>Order Date : </b> {{order.date}}</h6>
           <h6><b>Total Price : </b> {{order.totalPrice}}</h6>
           <h6><b>Order Status : </b>
-            <mat-form-field *ngIf="!spanCondition" appearance="fill" class="w-100">
+            <mat-form-field *ngIf="!spanCondition" appearance="outline" class="w-75">
               <mat-label>Order Status</mat-label>
               <mat-select (valueChange)="updateStatus(order._id,$event)">
                 <mat-option style="z-index: 2000;" *ngFor="let s of statusOptions" [value]="s.value">
@@ -51,26 +51,6 @@
           </table>
         </div>
       </div>
-      <!-- <div class="side2">
-        <h6><b>User Email :</b> {{order.email}}</h6>
-        <h6><b>Order Date :</b> {{order.date}}</h6>
-        <h6><b>Total Price :</b> {{order.totalPrice}}</h6>
-        <div>
-          <h6><b>Status:</b></h6>
-          <select class='select-option' #mySelect (change)='onOptionsSelected(order._id,mySelect.value)'>
-            <option class='option' *ngFor='let option of dropDownData' [value]="option">{{option}}</option>
-          </select>
-        </div>
-        <div class="row justify-content-around layout" *ngFor="let v of order.productsInOrder">
-          <div class="orderDetails">
-            <h6> <b>Book title:</b>{{v.title}}</h6>
-            <h6> <b>Quantity:</b>{{v.quantity}}</h6>
-          </div>
-        </div>
-        <div *ngFor="let p of order.productsInOrder" class="total">
-          <h4>Total Price = {{p.unitPrice*p.quantity}}</h4>
-        </div>
-      </div> -->
     </div>
     <div>
       <pagination-controls class="my-pagination"
