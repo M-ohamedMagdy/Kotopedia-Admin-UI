@@ -55,7 +55,6 @@ mat-select{
 
 mat-form-field{
   margin-top: 1%;
-  /* background-color: var(--color1); */
   border-radius: 10px;
 }
 .allOrders button{
