@@ -2,6 +2,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Component, OnChanges ,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators ,FormBuilder } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-books',
@@ -30,7 +31,7 @@ export class BooksComponent implements OnInit{
   constructor(private prodServ:ProductsService ,private formBulider:FormBuilder ,private http:HttpClient ){
       this.AddingForm = this.formBulider.group({
         title:['',[Validators.required,Validators.maxLength(20),Validators.minLength(3)]],
-        category:[''],
+        category:['',[Validators.required]],
         unitPrice:['',[Validators.required]],
         description:['',[Validators.required]],
         author:['',[Validators.required,Validators.maxLength(12),Validators.minLength(3)]],
@@ -115,40 +116,46 @@ export class BooksComponent implements OnInit{
 
   //Add Product
   AddOne(){
-    try {
-    const fd = new FormData();
-    fd.append('title',this.AddingForm.get('title')?.value);
-    fd.append('category',this.AddingForm.get('category')?.value);
-    fd.append('unitPrice',this.AddingForm.get('unitPrice')?.value);
-    fd.append('description',this.AddingForm.get('description')?.value);
-    fd.append('author',this.AddingForm.get('author')?.value);
-    fd.append('photo',this.selectedFile,this.selectedFile.name);
+    if(this.AddingForm.valid){
+      try {
+      const fd = new FormData();
+      fd.append('title',this.AddingForm.get('title')?.value);
+      fd.append('category',this.AddingForm.get('category')?.value);
+      fd.append('unitPrice',this.AddingForm.get('unitPrice')?.value);
+      fd.append('description',this.AddingForm.get('description')?.value);
+      fd.append('author',this.AddingForm.get('author')?.value);
+      fd.append('photo',this.selectedFile,this.selectedFile.name);
 
-    this.selectedFile = null;
+      this.selectedFile = null;
 
-    //console.log(fd);
-    //console.log(this.AddingForm.value);
-
-
-    this.prodServ.addNewProduct(fd).subscribe({
-      next:res=>{
-      this.prodServ.getAllProducts().subscribe(
-        {
-          next:(res)=>{
-            this.Products=res;
-          },
-          error(err){console.log(err)}
-        }
-      )
-    },error:err=>{
-      console.log(fd);
+      this.prodServ.addNewProduct(fd).subscribe({
+        next:res=>{
+        this.prodServ.getAllProducts().subscribe(
+          {
+            next:(res)=>{
+              this.Products=res;
+            },
+            error(err){console.log(err)}
+          }
+        )
+      },error:err=>{
+        console.log(fd);
+      }
+      })
+      } catch (error) {
+        console.log(error);
+      }
     }
-    })
-    } catch (error) {
-      console.log(error);
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid Data Entered!',
+        timer: 2000
+      })
     }
-
     this.AddingForm.reset();
+
   }
 
   //Delete All Products
